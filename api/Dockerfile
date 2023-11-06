@@ -58,4 +58,4 @@ RUN chown node /app/uploads
 ENV GRAPHILE_TURBO=1
 ENV NODE_ENV=$NODE_ENV
 USER node
-CMD ./start.sh db 5432 yarn start
+CMD ./start.sh $DB_HOST $DB_PORT yarn start
