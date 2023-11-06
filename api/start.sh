@@ -14,7 +14,7 @@ while [ $i -lt $MAX_RETRIES ]; do
 	sleep "$((2 ** i))"
 
 	# Try to open a connection to $HOST:$PORT
-	if nc -z -- "$HOST" "$PORT"; then
+	if nc -z -- "$DB_HOST" "$DB_HOST"; then
 		exec "$@"
 	fi
 
@@ -22,5 +22,5 @@ while [ $i -lt $MAX_RETRIES ]; do
 done
 
 # If we are here, then we could not reach the server. Return EXIT_FAILURE
-echo "${HOST}:${PORT} did not respond in time, aborting"
+echo "$DB_HOST:$DB_HOST did not respond in time, aborting"
 exit 1
